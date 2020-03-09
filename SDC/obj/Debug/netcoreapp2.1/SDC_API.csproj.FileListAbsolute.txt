@@ -1,0 +1,16 @@
+C:\Users\Jay\source\repos\SDC\SDC\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\Jay\source\repos\SDC\SDC\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\Jay\source\repos\SDC\SDC\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\Jay\source\repos\SDC\SDC\bin\Debug\netcoreapp2.1\SDC_API.deps.json
+C:\Users\Jay\source\repos\SDC\SDC\bin\Debug\netcoreapp2.1\SDC_API.runtimeconfig.json
+C:\Users\Jay\source\repos\SDC\SDC\bin\Debug\netcoreapp2.1\SDC_API.runtimeconfig.dev.json
+C:\Users\Jay\source\repos\SDC\SDC\bin\Debug\netcoreapp2.1\SDC_API.dll
+C:\Users\Jay\source\repos\SDC\SDC\bin\Debug\netcoreapp2.1\SDC_API.pdb
+C:\Users\Jay\source\repos\SDC\SDC\obj\Debug\netcoreapp2.1\SDC_API.csprojAssemblyReference.cache
+C:\Users\Jay\source\repos\SDC\SDC\obj\Debug\netcoreapp2.1\SDC_API.RazorAssemblyInfo.cache
+C:\Users\Jay\source\repos\SDC\SDC\obj\Debug\netcoreapp2.1\SDC_API.RazorAssemblyInfo.cs
+C:\Users\Jay\source\repos\SDC\SDC\obj\Debug\netcoreapp2.1\SDC_API.AssemblyInfoInputs.cache
+C:\Users\Jay\source\repos\SDC\SDC\obj\Debug\netcoreapp2.1\SDC_API.AssemblyInfo.cs
+C:\Users\Jay\source\repos\SDC\SDC\obj\Debug\netcoreapp2.1\SDC_API.RazorTargetAssemblyInfo.cache
+C:\Users\Jay\source\repos\SDC\SDC\obj\Debug\netcoreapp2.1\SDC_API.dll
+C:\Users\Jay\source\repos\SDC\SDC\obj\Debug\netcoreapp2.1\SDC_API.pdb
