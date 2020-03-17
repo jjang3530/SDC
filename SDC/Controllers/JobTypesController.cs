@@ -7,60 +7,60 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SDC_API.Models;
 
-namespace SDC.Controllers
+namespace SDC_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClientsController : ControllerBase
+    public class JobTypesController : ControllerBase
     {
         private readonly SDCContext _context;
 
-        public ClientsController(SDCContext context)
+        public JobTypesController(SDCContext context)
         {
             _context = context;
         }
 
-        // GET: api/Clients
+        // GET: api/JobTypes
         [HttpGet]
-        public IEnumerable<Client> GetClient()
+        public IEnumerable<JobType> GetJobType()
         {
-            return _context.Client;
+            return _context.JobType;
         }
 
-        // GET: api/Clients/5
+        // GET: api/JobTypes/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetClient([FromRoute] int id)
+        public async Task<IActionResult> GetJobType([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var client = await _context.Client.FindAsync(id);
+            var jobType = await _context.JobType.FindAsync(id);
 
-            if (client == null)
+            if (jobType == null)
             {
                 return NotFound();
             }
 
-            return Ok(client);
+            return Ok(jobType);
         }
 
-        // PUT: api/Clients/5
+        // PUT: api/JobTypes/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutClient([FromRoute] int id, [FromBody] Client client)
+        public async Task<IActionResult> PutJobType([FromRoute] int id, [FromBody] JobType jobType)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != client.ClientId)
+            if (id != jobType.JobId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(client).State = EntityState.Modified;
+            _context.Entry(jobType).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace SDC.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ClientExists(id))
+                if (!JobTypeExists(id))
                 {
                     return NotFound();
                 }
@@ -81,45 +81,45 @@ namespace SDC.Controllers
             return NoContent();
         }
 
-        // POST: api/Clients
+        // POST: api/JobTypes
         [HttpPost]
-        public async Task<IActionResult> PostClient([FromBody] Client client)
+        public async Task<IActionResult> PostJobType([FromBody] JobType jobType)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Client.Add(client);
+            _context.JobType.Add(jobType);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetClient", new { id = client.ClientId }, client);
+            return CreatedAtAction("GetJobType", new { id = jobType.JobId }, jobType);
         }
 
-        // DELETE: api/Clients/5
+        // DELETE: api/JobTypes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteClient([FromRoute] int id)
+        public async Task<IActionResult> DeleteJobType([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var client = await _context.Client.FindAsync(id);
-            if (client == null)
+            var jobType = await _context.JobType.FindAsync(id);
+            if (jobType == null)
             {
                 return NotFound();
             }
 
-            _context.Client.Remove(client);
+            _context.JobType.Remove(jobType);
             await _context.SaveChangesAsync();
 
-            return Ok(client);
+            return Ok(jobType);
         }
 
-        private bool ClientExists(int id)
+        private bool JobTypeExists(int id)
         {
-            return _context.Client.Any(e => e.ClientId == id);
+            return _context.JobType.Any(e => e.JobId == id);
         }
     }
 }

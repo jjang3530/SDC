@@ -14,3 +14,4 @@ C:\Users\Jay\source\repos\SDC\SDC\obj\Debug\netcoreapp2.1\SDC_API.AssemblyInfo.c
 C:\Users\Jay\source\repos\SDC\SDC\obj\Debug\netcoreapp2.1\SDC_API.RazorTargetAssemblyInfo.cache
 C:\Users\Jay\source\repos\SDC\SDC\obj\Debug\netcoreapp2.1\SDC_API.dll
 C:\Users\Jay\source\repos\SDC\SDC\obj\Debug\netcoreapp2.1\SDC_API.pdb
+C:\Users\Jay\source\repos\SDC\SDC\bin\Debug\netcoreapp2.1\app.yaml

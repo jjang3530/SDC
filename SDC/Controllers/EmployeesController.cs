@@ -7,60 +7,60 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SDC_API.Models;
 
-namespace SDC.Controllers
+namespace SDC_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClientsController : ControllerBase
+    public class EmployeesController : ControllerBase
     {
         private readonly SDCContext _context;
 
-        public ClientsController(SDCContext context)
+        public EmployeesController(SDCContext context)
         {
             _context = context;
         }
 
-        // GET: api/Clients
+        // GET: api/Employees
         [HttpGet]
-        public IEnumerable<Client> GetClient()
+        public IEnumerable<Employee> GetEmployee()
         {
-            return _context.Client;
+            return _context.Employee;
         }
 
-        // GET: api/Clients/5
+        // GET: api/Employees/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetClient([FromRoute] int id)
+        public async Task<IActionResult> GetEmployee([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var client = await _context.Client.FindAsync(id);
+            var employee = await _context.Employee.FindAsync(id);
 
-            if (client == null)
+            if (employee == null)
             {
                 return NotFound();
             }
 
-            return Ok(client);
+            return Ok(employee);
         }
 
-        // PUT: api/Clients/5
+        // PUT: api/Employees/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutClient([FromRoute] int id, [FromBody] Client client)
+        public async Task<IActionResult> PutEmployee([FromRoute] int id, [FromBody] Employee employee)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != client.ClientId)
+            if (id != employee.UserId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(client).State = EntityState.Modified;
+            _context.Entry(employee).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace SDC.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ClientExists(id))
+                if (!EmployeeExists(id))
                 {
                     return NotFound();
                 }
@@ -81,45 +81,45 @@ namespace SDC.Controllers
             return NoContent();
         }
 
-        // POST: api/Clients
+        // POST: api/Employees
         [HttpPost]
-        public async Task<IActionResult> PostClient([FromBody] Client client)
+        public async Task<IActionResult> PostEmployee([FromBody] Employee employee)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Client.Add(client);
+            _context.Employee.Add(employee);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetClient", new { id = client.ClientId }, client);
+            return CreatedAtAction("GetEmployee", new { id = employee.UserId }, employee);
         }
 
-        // DELETE: api/Clients/5
+        // DELETE: api/Employees/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteClient([FromRoute] int id)
+        public async Task<IActionResult> DeleteEmployee([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var client = await _context.Client.FindAsync(id);
-            if (client == null)
+            var employee = await _context.Employee.FindAsync(id);
+            if (employee == null)
             {
                 return NotFound();
             }
 
-            _context.Client.Remove(client);
+            _context.Employee.Remove(employee);
             await _context.SaveChangesAsync();
 
-            return Ok(client);
+            return Ok(employee);
         }
 
-        private bool ClientExists(int id)
+        private bool EmployeeExists(int id)
         {
-            return _context.Client.Any(e => e.ClientId == id);
+            return _context.Employee.Any(e => e.UserId == id);
         }
     }
 }

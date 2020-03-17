@@ -7,60 +7,60 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SDC_API.Models;
 
-namespace SDC.Controllers
+namespace SDC_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClientsController : ControllerBase
+    public class SuppliersController : ControllerBase
     {
         private readonly SDCContext _context;
 
-        public ClientsController(SDCContext context)
+        public SuppliersController(SDCContext context)
         {
             _context = context;
         }
 
-        // GET: api/Clients
+        // GET: api/Suppliers
         [HttpGet]
-        public IEnumerable<Client> GetClient()
+        public IEnumerable<Supplier> GetSupplier()
         {
-            return _context.Client;
+            return _context.Supplier;
         }
 
-        // GET: api/Clients/5
+        // GET: api/Suppliers/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetClient([FromRoute] int id)
+        public async Task<IActionResult> GetSupplier([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var client = await _context.Client.FindAsync(id);
+            var supplier = await _context.Supplier.FindAsync(id);
 
-            if (client == null)
+            if (supplier == null)
             {
                 return NotFound();
             }
 
-            return Ok(client);
+            return Ok(supplier);
         }
 
-        // PUT: api/Clients/5
+        // PUT: api/Suppliers/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutClient([FromRoute] int id, [FromBody] Client client)
+        public async Task<IActionResult> PutSupplier([FromRoute] int id, [FromBody] Supplier supplier)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != client.ClientId)
+            if (id != supplier.SupplierId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(client).State = EntityState.Modified;
+            _context.Entry(supplier).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace SDC.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ClientExists(id))
+                if (!SupplierExists(id))
                 {
                     return NotFound();
                 }
@@ -81,45 +81,45 @@ namespace SDC.Controllers
             return NoContent();
         }
 
-        // POST: api/Clients
+        // POST: api/Suppliers
         [HttpPost]
-        public async Task<IActionResult> PostClient([FromBody] Client client)
+        public async Task<IActionResult> PostSupplier([FromBody] Supplier supplier)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Client.Add(client);
+            _context.Supplier.Add(supplier);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetClient", new { id = client.ClientId }, client);
+            return CreatedAtAction("GetSupplier", new { id = supplier.SupplierId }, supplier);
         }
 
-        // DELETE: api/Clients/5
+        // DELETE: api/Suppliers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteClient([FromRoute] int id)
+        public async Task<IActionResult> DeleteSupplier([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var client = await _context.Client.FindAsync(id);
-            if (client == null)
+            var supplier = await _context.Supplier.FindAsync(id);
+            if (supplier == null)
             {
                 return NotFound();
             }
 
-            _context.Client.Remove(client);
+            _context.Supplier.Remove(supplier);
             await _context.SaveChangesAsync();
 
-            return Ok(client);
+            return Ok(supplier);
         }
 
-        private bool ClientExists(int id)
+        private bool SupplierExists(int id)
         {
-            return _context.Client.Any(e => e.ClientId == id);
+            return _context.Supplier.Any(e => e.SupplierId == id);
         }
     }
 }

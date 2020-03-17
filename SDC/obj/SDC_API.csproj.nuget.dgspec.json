@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Data\\01.CPA\\CPA_Level_6\\Capston\\SDC-API\\SDC\\SDC_API.csproj": {}
+    "C:\\Users\\Jay\\source\\repos\\SDC\\SDC\\SDC_API.csproj": {}
   },
   "projects": {
-    "C:\\Data\\01.CPA\\CPA_Level_6\\Capston\\SDC-API\\SDC\\SDC_API.csproj": {
+    "C:\\Users\\Jay\\source\\repos\\SDC\\SDC\\SDC_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Data\\01.CPA\\CPA_Level_6\\Capston\\SDC-API\\SDC\\SDC_API.csproj",
+        "projectUniqueName": "C:\\Users\\Jay\\source\\repos\\SDC\\SDC\\SDC_API.csproj",
         "projectName": "SDC_API",
-        "projectPath": "C:\\Data\\01.CPA\\CPA_Level_6\\Capston\\SDC-API\\SDC\\SDC_API.csproj",
-        "packagesPath": "C:\\Users\\tatat\\.nuget\\packages\\",
-        "outputPath": "C:\\Data\\01.CPA\\CPA_Level_6\\Capston\\SDC-API\\SDC\\obj\\",
+        "projectPath": "C:\\Users\\Jay\\source\\repos\\SDC\\SDC\\SDC_API.csproj",
+        "packagesPath": "C:\\Users\\Jay\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jay\\source\\repos\\SDC\\SDC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\tatat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jay\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -92,7 +93,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SDC.Models
+namespace SDC_API.Models
 {
     public partial class SupplierOrder
     {
         public int SupplierId { get; set; }
-        public string OrderMethod { get; set; }
+        public string OrderingMethod { get; set; }
         public string OrderingEmail { get; set; }
         public string PriceFound { get; set; }
         public string DiscountOw { get; set; }
@@ -14,8 +14,8 @@ namespace SDC.Models
         public string DiscountNotes { get; set; }
         public string Terms { get; set; }
         public string LeadTime { get; set; }
-        public string SalesReq { get; set; }
-        public string Books { get; set; }
+        public decimal? SalesReq { get; set; }
+        public int? Books { get; set; }
         public string PaymentMethod { get; set; }
         public string PaymentNotes { get; set; }
 

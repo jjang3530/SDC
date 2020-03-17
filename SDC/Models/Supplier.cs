@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SDC.Models
+namespace SDC_API.Models
 {
     public partial class Supplier
     {
-        public Supplier()
-        {
-            PurchaseOrder = new HashSet<PurchaseOrder>();
-        }
-
         public int SupplierId { get; set; }
         public string Company { get; set; }
         public string Category { get; set; }
@@ -21,12 +16,11 @@ namespace SDC.Models
         public string Phone { get; set; }
         public string RepName { get; set; }
         public string RepEmail { get; set; }
-        public string CreatedBy { get; set; }
+        public int? CreatedBy { get; set; }
         public DateTime? CreatedTime { get; set; }
 
         public Employee CreatedByNavigation { get; set; }
         public SupplierLogin SupplierLogin { get; set; }
         public SupplierOrder SupplierOrder { get; set; }
-        public ICollection<PurchaseOrder> PurchaseOrder { get; set; }
     }
 }

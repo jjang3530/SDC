@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SDC.Models
+namespace SDC_API.Models
 {
     public partial class SupplierLogin
     {
