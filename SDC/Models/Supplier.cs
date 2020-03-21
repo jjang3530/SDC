@@ -5,6 +5,11 @@ namespace SDC_API.Models
 {
     public partial class Supplier
     {
+        public Supplier()
+        {
+            PurchaseOrder = new HashSet<PurchaseOrder>();
+        }
+
         public int SupplierId { get; set; }
         public string Company { get; set; }
         public string Category { get; set; }
@@ -22,5 +27,6 @@ namespace SDC_API.Models
         public Employee CreatedByNavigation { get; set; }
         public SupplierLogin SupplierLogin { get; set; }
         public SupplierOrder SupplierOrder { get; set; }
+        public ICollection<PurchaseOrder> PurchaseOrder { get; set; }
     }
 }

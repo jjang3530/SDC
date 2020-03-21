@@ -5,6 +5,11 @@ namespace SDC_API.Models
 {
     public partial class Client
     {
+        public Client()
+        {
+            Project = new HashSet<Project>();
+        }
+
         public int ClientId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -27,5 +32,7 @@ namespace SDC_API.Models
         public string Term { get; set; }
         public DateTime Timestamp { get; set; }
         public string Comments { get; set; }
+
+        public ICollection<Project> Project { get; set; }
     }
 }
