@@ -30,6 +30,17 @@ namespace SDC
             services.AddDbContext<SDCContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +57,7 @@ namespace SDC
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseCors("AllowOrigin");
         }
     }
 }
