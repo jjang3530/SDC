@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SDC_API.Models;
 
-namespace SDC.Controllers
+namespace SDC_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
