@@ -29,16 +29,16 @@ namespace SDC_API.Controllers
             return _context.CodeList;
         }
 
-        // GET: api/CodeLists/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetCodeList([FromRoute] int id)
+        // GET: api/CodeLists/1/codeid/2
+        [HttpGet("{categoryId:int}/codeId/{codeId:int}")]
+        public async Task<IActionResult> GetCodeList([FromRoute] int categoryId, int codeId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var codeList = await _context.CodeList.FindAsync(id);
+            var codeList = await _context.CodeList.FirstOrDefaultAsync(s => s.CategoryId == categoryId && s.CodeId == codeId);
 
             if (codeList == null)
             {
@@ -48,16 +48,16 @@ namespace SDC_API.Controllers
             return Ok(codeList);
         }
 
-        // PUT: api/CodeLists/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCodeList([FromRoute] int id, [FromBody] CodeList codeList)
+        // PUT: api/CodeLists/1/codeid/2
+        [HttpPut("{categoryId:int}/codeId/{codeId:int}")]
+        public async Task<IActionResult> PutCodeList([FromRoute] int categoryId, int codeId, [FromBody] CodeList codeList)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != codeList.CategoryId)
+            if (codeId != codeList.CodeId)
             {
                 return BadRequest();
             }
@@ -70,7 +70,7 @@ namespace SDC_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CodeListExists(id))
+                if (!CategoryListExists(categoryId) && !CodeListExists(codeId))
                 {
                     return NotFound();
                 }
@@ -99,7 +99,7 @@ namespace SDC_API.Controllers
             }
             catch (DbUpdateException)
             {
-                if (CodeListExists(codeList.CategoryId))
+                if (CategoryListExists(codeList.CategoryId) && CodeListExists(codeList.CodeId))
                 {
                     return new StatusCodeResult(StatusCodes.Status409Conflict);
                 }
@@ -112,16 +112,16 @@ namespace SDC_API.Controllers
             return CreatedAtAction("GetCodeList", new { id = codeList.CategoryId }, codeList);
         }
 
-        // DELETE: api/CodeLists/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCodeList([FromRoute] int id)
+        // DELETE: api/CodeLists/1/codeid/2
+        [HttpDelete("{categoryId:int}/codeId/{codeId:int}")]
+        public async Task<IActionResult> DeleteCodeList([FromRoute] int categoryId, int codeId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var codeList = await _context.CodeList.FindAsync(id);
+            var codeList = await _context.CodeList.FirstOrDefaultAsync(s => s.CategoryId == categoryId && s.CodeId == codeId);
             if (codeList == null)
             {
                 return NotFound();
@@ -134,6 +134,11 @@ namespace SDC_API.Controllers
         }
 
         private bool CodeListExists(int id)
+        {
+            return _context.CodeList.Any(e => e.CodeId == id);
+        }
+
+        private bool CategoryListExists(int id)
         {
             return _context.CodeList.Any(e => e.CategoryId == id);
         }
