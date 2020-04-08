@@ -30,15 +30,15 @@ namespace SDC_API.Controllers
         }
 
         // GET: api/Rooms/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetRoom([FromRoute] int id)
+        [HttpGet("{roomId}/projectId/{projectId:int}")]
+        public async Task<IActionResult> GetRoom([FromRoute] string roomId, int projectId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var room = await _context.Room.FindAsync(id);
+            var room = await _context.Room.FirstOrDefaultAsync(s => s.RoomId == roomId && s.ProjectId == projectId);
 
             if (room == null)
             {
@@ -49,15 +49,15 @@ namespace SDC_API.Controllers
         }
 
         // PUT: api/Rooms/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutRoom([FromRoute] int id, [FromBody] Room room)
+        [HttpPut("{roomId}/projectId/{projectId:int}")]
+        public async Task<IActionResult> PutRoom([FromRoute] string roomId, int projectId, [FromBody] Room room)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != room.ProjectId)
+            if (roomId != room.RoomId)
             {
                 return BadRequest();
             }
@@ -70,7 +70,7 @@ namespace SDC_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RoomExists(id))
+                if (!RoomExists(roomId) && !ProjectExists(projectId))
                 {
                     return NotFound();
                 }
@@ -99,7 +99,7 @@ namespace SDC_API.Controllers
             }
             catch (DbUpdateException)
             {
-                if (RoomExists(room.ProjectId))
+                if (RoomExists(room.RoomId) && ProjectExists(room.ProjectId))
                 {
                     return new StatusCodeResult(StatusCodes.Status409Conflict);
                 }
@@ -113,15 +113,15 @@ namespace SDC_API.Controllers
         }
 
         // DELETE: api/Rooms/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRoom([FromRoute] int id)
+        [HttpDelete("{roomId}/projectId/{projectId:int}")]
+        public async Task<IActionResult> DeleteRoom([FromRoute] string roomId, int projectId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var room = await _context.Room.FindAsync(id);
+            var room = await _context.Room.FirstOrDefaultAsync(s => s.RoomId == roomId && s.ProjectId == projectId);
             if (room == null)
             {
                 return NotFound();
@@ -133,7 +133,12 @@ namespace SDC_API.Controllers
             return Ok(room);
         }
 
-        private bool RoomExists(int id)
+        private bool RoomExists(string id)
+        {
+            return _context.Room.Any(e => e.RoomId == id);
+        }
+
+        private bool ProjectExists(int id)
         {
             return _context.Room.Any(e => e.ProjectId == id);
         }

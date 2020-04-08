@@ -29,16 +29,16 @@ namespace SDC_API.Controllers
             return _context.Product;
         }
 
-        // GET: api/Products/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetProduct([FromRoute] int id)
+        // GET: api/Products/5/supplierid/1
+        [HttpGet("{productId}/supplierid/{supplierid:int}")]
+        public async Task<IActionResult> GetProduct([FromRoute] string productId, int supplierId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var product = await _context.Product.FindAsync(id);
+            var product = await _context.Product.FirstOrDefaultAsync(s => s.ProductId == productId && s.SupplierId == supplierId);
 
             if (product == null)
             {
@@ -49,15 +49,15 @@ namespace SDC_API.Controllers
         }
 
         // PUT: api/Products/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct([FromRoute] int id, [FromBody] Product product)
+        [HttpPut("{productId}/supplierid/{supplierid:int}")]
+        public async Task<IActionResult> PutProduct([FromRoute] string productId, int supplierId, [FromBody] Product product)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != product.SupplierId)
+            if (productId != product.ProductId)
             {
                 return BadRequest();
             }
@@ -70,7 +70,7 @@ namespace SDC_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductExists(id))
+                if (!ProductExists(productId) && !SupplierExists(supplierId))
                 {
                     return NotFound();
                 }
@@ -99,7 +99,7 @@ namespace SDC_API.Controllers
             }
             catch (DbUpdateException)
             {
-                if (ProductExists(product.SupplierId))
+                if (ProductExists(product.ProductId) && SupplierExists(product.SupplierId))
                 {
                     return new StatusCodeResult(StatusCodes.Status409Conflict);
                 }
@@ -113,15 +113,15 @@ namespace SDC_API.Controllers
         }
 
         // DELETE: api/Products/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct([FromRoute] int id)
+        [HttpDelete("{productId}/supplierid/{supplierid:int}")]
+        public async Task<IActionResult> DeleteProduct([FromRoute] string productId, int supplierId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var product = await _context.Product.FindAsync(id);
+            var product = await _context.Product.FirstOrDefaultAsync(s => s.ProductId == productId && s.SupplierId == supplierId);
             if (product == null)
             {
                 return NotFound();
@@ -133,7 +133,12 @@ namespace SDC_API.Controllers
             return Ok(product);
         }
 
-        private bool ProductExists(int id)
+        private bool ProductExists(string id)
+        {
+            return _context.Product.Any(e => e.ProductId == id);
+        }
+
+        private bool SupplierExists(int id)
         {
             return _context.Product.Any(e => e.SupplierId == id);
         }

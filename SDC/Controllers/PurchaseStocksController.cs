@@ -30,15 +30,15 @@ namespace SDC_API.Controllers
         }
 
         // GET: api/PurchaseStocks/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetPurchaseStock([FromRoute] int id)
+        [HttpGet("{projectId:int}/odrerId/{orderId:int}/productId/{productId}")]
+        public async Task<IActionResult> GetPurchaseStock([FromRoute] int projectId, int orderId, string productId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var purchaseStock = await _context.PurchaseStock.FindAsync(id);
+            var purchaseStock = await _context.PurchaseStock.FirstOrDefaultAsync(s => s.ProjectId == projectId && s.OrderId == orderId && s.ProductId == productId);
 
             if (purchaseStock == null)
             {
@@ -49,15 +49,15 @@ namespace SDC_API.Controllers
         }
 
         // PUT: api/PurchaseStocks/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPurchaseStock([FromRoute] int id, [FromBody] PurchaseStock purchaseStock)
+        [HttpPut("{projectId:int}/odrerId/{orderId:int}/productId/{productId}")]
+        public async Task<IActionResult> PutPurchaseStock([FromRoute] int projectId, int orderId, string productId, [FromBody] PurchaseStock purchaseStock)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != purchaseStock.ProjectId)
+            if (projectId != purchaseStock.ProjectId)
             {
                 return BadRequest();
             }
@@ -70,7 +70,7 @@ namespace SDC_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PurchaseStockExists(id))
+                if (!ProjectExists(projectId) && !OrderExists(orderId) && !ProductExists(productId))
                 {
                     return NotFound();
                 }
@@ -99,7 +99,7 @@ namespace SDC_API.Controllers
             }
             catch (DbUpdateException)
             {
-                if (PurchaseStockExists(purchaseStock.ProjectId))
+                if (ProjectExists(purchaseStock.ProjectId))
                 {
                     return new StatusCodeResult(StatusCodes.Status409Conflict);
                 }
@@ -113,15 +113,15 @@ namespace SDC_API.Controllers
         }
 
         // DELETE: api/PurchaseStocks/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePurchaseStock([FromRoute] int id)
+        [HttpDelete("{projectId:int}/odrerId/{orderId:int}/productId/{productId}")]
+        public async Task<IActionResult> DeletePurchaseStock([FromRoute] int projectId, int orderId, string productId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var purchaseStock = await _context.PurchaseStock.FindAsync(id);
+            var purchaseStock = await _context.PurchaseStock.FirstOrDefaultAsync(s => s.ProjectId == projectId && s.OrderId == orderId && s.ProductId == productId);
             if (purchaseStock == null)
             {
                 return NotFound();
@@ -133,9 +133,19 @@ namespace SDC_API.Controllers
             return Ok(purchaseStock);
         }
 
-        private bool PurchaseStockExists(int id)
+        private bool ProjectExists(int id)
         {
-            return _context.PurchaseStock.Any(e => e.ProjectId == id);
+            return _context.PurchaseOrderdetail.Any(e => e.ProjectId == id);
+        }
+
+        private bool OrderExists(int id)
+        {
+            return _context.PurchaseOrderdetail.Any(e => e.OrderId == id);
+        }
+
+        private bool ProductExists(string id)
+        {
+            return _context.PurchaseOrderdetail.Any(e => e.ProductId == id);
         }
     }
 }

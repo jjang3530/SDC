@@ -30,15 +30,15 @@ namespace SDC_API.Controllers
         }
 
         // GET: api/Draperies/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetDrapery([FromRoute] int id)
+        [HttpGet("{draperyId:int}/proejctid/{projectId:int}/roomId/{roomId}")]
+        public async Task<IActionResult> GetDrapery([FromRoute] int draperyId, int projectId, string roomId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var drapery = await _context.Drapery.FindAsync(id);
+            var drapery = await _context.Drapery.FirstOrDefaultAsync(s => s.DraperyId == draperyId && s.ProjectId == projectId && s.RoomId == roomId);
 
             if (drapery == null)
             {
@@ -49,15 +49,15 @@ namespace SDC_API.Controllers
         }
 
         // PUT: api/Draperies/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutDrapery([FromRoute] int id, [FromBody] Drapery drapery)
+        [HttpPut("{draperyId:int}/proejctid/{projectId:int}/roomId/{roomId}")]
+        public async Task<IActionResult> PutDrapery([FromRoute]  int draperyId, int projectId, string roomId, [FromBody] Drapery drapery)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != drapery.ProjectId)
+            if (projectId != drapery.ProjectId)
             {
                 return BadRequest();
             }
@@ -70,7 +70,7 @@ namespace SDC_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!DraperyExists(id))
+                if (!DraperyExists(draperyId) && !ProjectExists(projectId) && !RoomExists(roomId))
                 {
                     return NotFound();
                 }
@@ -113,15 +113,15 @@ namespace SDC_API.Controllers
         }
 
         // DELETE: api/Draperies/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDrapery([FromRoute] int id)
+        [HttpDelete("{draperyId:int}/proejctid/{projectId:int}/roomId/{roomId}")]
+        public async Task<IActionResult> DeleteDrapery([FromRoute]  int draperyId, int projectId, string roomId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var drapery = await _context.Drapery.FindAsync(id);
+            var drapery = await _context.Drapery.FirstOrDefaultAsync(s => s.DraperyId == draperyId && s.ProjectId == projectId && s.RoomId == roomId);
             if (drapery == null)
             {
                 return NotFound();
@@ -135,7 +135,17 @@ namespace SDC_API.Controllers
 
         private bool DraperyExists(int id)
         {
+            return _context.Drapery.Any(e => e.DraperyId == id);
+        }
+
+        private bool ProjectExists(int id)
+        {
             return _context.Drapery.Any(e => e.ProjectId == id);
+        }
+
+        private bool RoomExists(string id)
+        {
+            return _context.Drapery.Any(e => e.RoomId == id);
         }
     }
 }

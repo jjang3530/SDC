@@ -66,7 +66,7 @@ namespace SDC_API.Test
             {
                 CategoryId = 1,
                 CodeId = 6,
-                CodeName = "Conestoga"
+                CodeName = "NewPickle"
             };
 
             //Act
@@ -78,8 +78,8 @@ namespace SDC_API.Test
             resClient.CodeName.Should().Be("NewPickle");
 
             //delete JayNew
-            int categoryId = _context.CodeList.FirstOrDefault(p => p.CodeName == "Conestoga").CategoryId;
-            int codeId = _context.CodeList.FirstOrDefault(p => p.CodeName == "Conestoga").CodeId;
+            int categoryId = _context.CodeList.FirstOrDefault(p => p.CodeName == "NewPickle").CategoryId;
+            int codeId = _context.CodeList.FirstOrDefault(p => p.CodeName == "NewPickle").CodeId;
             var resultDelete = await _controller.DeleteCodeList(categoryId, codeId);
         }
 
