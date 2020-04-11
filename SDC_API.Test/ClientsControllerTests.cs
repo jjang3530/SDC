@@ -12,7 +12,7 @@ namespace SDC_API.Test
     public class ClientsControllerTests
     {
         private static DbContextOptions<SDCContext> dbContextOptions { get; }
-        private static string connectionString = "Server = 34.73.191.28; Database=SDC;Uid=sqlserver;Password=Conestoga20";
+        private static string connectionString = "Server=DESKTOP-H7TUR07;Database=SDC;Trusted_Connection=True;MultipleActiveResultSets=true";
         private SDCContext _context;
         private ClientsController _controller;
 
@@ -28,7 +28,7 @@ namespace SDC_API.Test
         public async void Task1_GetById_Return_OkResult()
         {
             //Arrange
-            var Id = 2;
+            var Id = 1;
             _context = new SDCContext(dbContextOptions);
             _controller = new ClientsController(_context);
 
@@ -43,7 +43,7 @@ namespace SDC_API.Test
         public async void Task2_GetById_Return_NotFoundResult()
         {
             //Arrange
-            var Id = 1;
+            var Id = 222;
             _context = new SDCContext(dbContextOptions);
             _controller = new ClientsController(_context);
 
@@ -62,7 +62,7 @@ namespace SDC_API.Test
             _controller = new ClientsController(_context);
             var client = new Client()
             {
-                FirstName = "JayNew",
+                FirstName = "New_Pickle",
                 LastName = "Jang",
                 Category = "DD",
                 Company = "Ms",
@@ -91,10 +91,10 @@ namespace SDC_API.Test
             //Assert
             var okResult = result.Should().BeOfType<CreatedAtActionResult>().Subject;
             var resClient = okResult.Value.Should().BeAssignableTo<Client>().Subject;
-            resClient.FirstName.Should().Be("JayNew");
+            resClient.FirstName.Should().Be("New_Pickle");
 
             //delete JayNew
-            int newId = _context.Client.FirstOrDefault(p => p.FirstName == "JayNew").ClientId;
+            int newId = _context.Client.FirstOrDefault(p => p.FirstName == "New_Pickle").ClientId;
             var resultDelete = await _controller.DeleteClient(newId);
         }
 
@@ -104,13 +104,13 @@ namespace SDC_API.Test
             //Arrange
             _context = new SDCContext(dbContextOptions);
             _controller = new ClientsController(_context);
-            int newId = 141;
+            int newId = 109;
 
             //Act
             var updateData = new Client()
             {
                 ClientId = newId,
-                FirstName = "Kyrie",
+                FirstName = "Update_Pickle",
                 LastName = "Jang",
                 Category = "DD",
                 Company = "Ms",

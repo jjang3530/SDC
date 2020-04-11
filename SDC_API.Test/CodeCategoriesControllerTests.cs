@@ -12,7 +12,7 @@ namespace SDC_API.Test
     public class CodeCategoriesControllerTests
     {
         private static DbContextOptions<SDCContext> dbContextOptions { get; }
-        private static string connectionString = "Server = 34.73.191.28; Database=SDC;Uid=sqlserver;Password=Conestoga20";
+        private static string connectionString = "Server=DESKTOP-H7TUR07;Database=SDC;Trusted_Connection=True;MultipleActiveResultSets=true";
         private SDCContext _context;
         private CodeCategoriesController _controller;
 
