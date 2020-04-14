@@ -1,0 +1,113 @@
+﻿@model IEnumerable<SDC_Web.Models.PurchaseOrderdetail>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Purchase Order Details Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Dimension)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Pattern)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Colour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Uom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedTime)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.OrderedByNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PurchaseOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedByNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dimension)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Pattern)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Colour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Uom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedTime)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderedByNavigation.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchaseOrder.ShippingAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedByNavigation.FirstName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-projectId="@item.ProjectId" asp-route-orderId="@item.OrderId" asp-route-productId="@item.ProductId">Edit</a> |
+                <a asp-action="Details" asp-route-projectId="@item.ProjectId" asp-route-orderId="@item.OrderId" asp-route-productId="@item.ProductId">Details</a> |
+                <a asp-action="Delete" asp-route-projectId="@item.ProjectId" asp-route-orderId="@item.OrderId" asp-route-productId="@item.ProductId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

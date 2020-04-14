@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SDC_Web.Models.Drapery>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Draperies Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedTime)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.DesignedByNavigation)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Room)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedByNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedTime)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.DesignedByNavigation.FirstName)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Room.RoomId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedByNavigation.FirstName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-projectId="@item.ProjectId" asp-route-roomId="@item.RoomId" asp-route-draperyId="@item.DraperyId">Edit</a> |
+                <a asp-action="Details" asp-route-projectId="@item.ProjectId" asp-route-roomId="@item.RoomId" asp-route-draperyId="@item.DraperyId">Details</a> |
+                <a asp-action="Delete" asp-route-projectId="@item.ProjectId" asp-route-roomId="@item.RoomId" asp-route-draperyId="@item.DraperyId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

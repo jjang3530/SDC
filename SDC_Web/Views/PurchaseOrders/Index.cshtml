@@ -1,0 +1,89 @@
+﻿@model IEnumerable<SDC_Web.Models.PurchaseOrder>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Purchase Orders Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippingPlace)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippingAddress)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.ShippingPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstimatedShipdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedTime)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.OrderedByNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supplier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedByNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingPlace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingAddress)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.ShippingPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstimatedShipdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedTime)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderedByNavigation.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.ProjectTag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supplier.Company)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedByNavigation.FirstName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-projectId="@item.ProjectId" asp-route-orderId="@item.OrderId">Edit</a> |
+                <a asp-action="Details" asp-route-projectId="@item.ProjectId" asp-route-orderId="@item.OrderId">Details</a> |
+                <a asp-action="Delete" asp-route-projectId="@item.ProjectId" asp-route-orderId="@item.OrderId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -25,25 +25,6 @@ namespace SDC_Web.Controllers
             return View(await sDCContext.ToListAsync());
         }
 
-        // GET: CodeLists/Details/5
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var codeList = await _context.CodeList
-        //        .Include(c => c.Category)
-        //        .FirstOrDefaultAsync(m => m.CategoryId == id);
-        //    if (codeList == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(codeList);
-        //}
-
         public async Task<IActionResult> Details(int? categoryId, int? codeId)
         {
             if (categoryId == null)

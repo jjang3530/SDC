@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Invoices Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -15,28 +15,28 @@
             <th>
                 @Html.DisplayNameFor(model => model.InvoiceDate)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Terms)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.BillPlace)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.BillAddress)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.BillPhone)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.BillEmail)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.ShipPlace)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ShipAddress)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Subtotal)
             </th>
             <th>
@@ -62,7 +62,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UpdatedByNavigation)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -72,28 +72,28 @@
             <td>
                 @Html.DisplayFor(modelItem => item.InvoiceDate)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Terms)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.BillPlace)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BillAddress)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.BillPhone)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BillEmail)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.ShipPlace)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ShipAddress)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Subtotal)
             </td>
             <td>
@@ -119,7 +119,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UpdatedByNavigation.FirstName)
-            </td>
+            </td>*@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ProjectId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |

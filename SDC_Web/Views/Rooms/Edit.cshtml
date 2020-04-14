@@ -1,0 +1,120 @@
+﻿@model SDC_Web.Models.Room
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Room</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ProjectId" />
+            <input type="hidden" asp-for="RoomId" />
+            <div class="form-group">
+                <label asp-for="FloorCeiling" class="control-label"></label>
+                <input asp-for="FloorCeiling" class="form-control" />
+                <span asp-validation-for="FloorCeiling" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotCeiling" class="control-label"></label>
+                <input asp-for="TotCeiling" class="form-control" />
+                <span asp-validation-for="TotCeiling" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BotFloor" class="control-label"></label>
+                <input asp-for="BotFloor" class="form-control" />
+                <span asp-validation-for="BotFloor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LootObject" class="control-label"></label>
+                <input asp-for="LootObject" class="form-control" />
+                <span asp-validation-for="LootObject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RootObject" class="control-label"></label>
+                <input asp-for="RootObject" class="form-control" />
+                <span asp-validation-for="RootObject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsideHorizontal" class="control-label"></label>
+                <input asp-for="InsideHorizontal" class="form-control" />
+                <span asp-validation-for="InsideHorizontal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsideVertical" class="control-label"></label>
+                <input asp-for="InsideVertical" class="form-control" />
+                <span asp-validation-for="InsideVertical" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OutsideHorizontal" class="control-label"></label>
+                <input asp-for="OutsideHorizontal" class="form-control" />
+                <span asp-validation-for="OutsideHorizontal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OutsideVertical" class="control-label"></label>
+                <input asp-for="OutsideVertical" class="form-control" />
+                <span asp-validation-for="OutsideVertical" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrimDepth" class="control-label"></label>
+                <input asp-for="TrimDepth" class="form-control" />
+                <span asp-validation-for="TrimDepth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsideDepth" class="control-label"></label>
+                <input asp-for="InsideDepth" class="form-control" />
+                <span asp-validation-for="InsideDepth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sill" class="control-label"></label>
+                <input asp-for="Sill" class="form-control" />
+                <span asp-validation-for="Sill" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Control" class="control-label"></label>
+                <input asp-for="Control" class="form-control" />
+                <span asp-validation-for="Control" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DesignedBy" class="control-label"></label>
+                <select asp-for="DesignedBy" class="form-control" asp-items="ViewBag.DesignedBy"></select>
+                <span asp-validation-for="DesignedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedTime" class="control-label"></label>
+                <input asp-for="CreatedTime" class="form-control" />
+                <span asp-validation-for="CreatedTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdatedBy" class="control-label"></label>
+                <select asp-for="UpdatedBy" class="form-control" asp-items="ViewBag.UpdatedBy"></select>
+                <span asp-validation-for="UpdatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdatedTime" class="control-label"></label>
+                <input asp-for="UpdatedTime" class="form-control" />
+                <span asp-validation-for="UpdatedTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

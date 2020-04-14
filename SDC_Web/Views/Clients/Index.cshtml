@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Clients Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -39,10 +39,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.Postalcode)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
+            </th>*@
+            @*<th>
                 @Html.DisplayNameFor(model => model.Website)
             </th>
             <th>
@@ -74,8 +74,8 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Comments)
-            </th>
-            <th></th>
+            </th>*@
+            <th>Update</th>
         </tr>
     </thead>
     <tbody>
@@ -108,10 +108,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Postalcode)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
+            </td>*@
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Website)
             </td>
             <td>
@@ -143,10 +143,10 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Comments)
-            </td>
+            </td>*@
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ClientId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ClientId">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.ClientId">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.ClientId">Details</a>
                 <a asp-action="Delete" asp-route-id="@item.ClientId">Delete</a>
             </td>
         </tr>
