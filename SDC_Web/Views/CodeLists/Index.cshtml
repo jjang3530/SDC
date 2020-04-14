@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SDC_Web.Models.CodeList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CodeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-categoryId="@item.CategoryId" asp-route-codeid="@item.CodeId">Edit</a> |
+                <a asp-action="Details" asp-route-categoryId="@item.CategoryId" asp-route-codeid="@item.CodeId">Details</a> |
+                <a asp-action="Delete" asp-route-categoryId="@item.CategoryId" asp-route-codeid="@item.CodeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

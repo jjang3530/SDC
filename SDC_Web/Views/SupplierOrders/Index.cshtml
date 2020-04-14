@@ -1,0 +1,107 @@
+﻿@model IEnumerable<SDC_Web.Models.SupplierOrder>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderingMethod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderingEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriceFound)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiscountOw)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiscountOr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiscountNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Terms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeadTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalesReq)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentMethod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supplier)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderingMethod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderingEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceFound)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiscountOw)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiscountOr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiscountNotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Terms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeadTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalesReq)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Books)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentMethod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentNotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supplier.Company)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SupplierId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SupplierId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SupplierId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

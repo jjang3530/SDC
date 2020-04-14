@@ -1,0 +1,89 @@
+﻿@model SDC_Web.Models.SupplierOrder
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>SupplierOrder</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SupplierId" />
+            <div class="form-group">
+                <label asp-for="OrderingMethod" class="control-label"></label>
+                <input asp-for="OrderingMethod" class="form-control" />
+                <span asp-validation-for="OrderingMethod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderingEmail" class="control-label"></label>
+                <input asp-for="OrderingEmail" class="form-control" />
+                <span asp-validation-for="OrderingEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceFound" class="control-label"></label>
+                <input asp-for="PriceFound" class="form-control" />
+                <span asp-validation-for="PriceFound" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiscountOw" class="control-label"></label>
+                <input asp-for="DiscountOw" class="form-control" />
+                <span asp-validation-for="DiscountOw" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiscountOr" class="control-label"></label>
+                <input asp-for="DiscountOr" class="form-control" />
+                <span asp-validation-for="DiscountOr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiscountNotes" class="control-label"></label>
+                <input asp-for="DiscountNotes" class="form-control" />
+                <span asp-validation-for="DiscountNotes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Terms" class="control-label"></label>
+                <input asp-for="Terms" class="form-control" />
+                <span asp-validation-for="Terms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeadTime" class="control-label"></label>
+                <input asp-for="LeadTime" class="form-control" />
+                <span asp-validation-for="LeadTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SalesReq" class="control-label"></label>
+                <input asp-for="SalesReq" class="form-control" />
+                <span asp-validation-for="SalesReq" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Books" class="control-label"></label>
+                <input asp-for="Books" class="form-control" />
+                <span asp-validation-for="Books" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentMethod" class="control-label"></label>
+                <input asp-for="PaymentMethod" class="form-control" />
+                <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentNotes" class="control-label"></label>
+                <input asp-for="PaymentNotes" class="form-control" />
+                <span asp-validation-for="PaymentNotes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

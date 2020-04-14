@@ -37,8 +37,8 @@ namespace SDC_API.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-H7TUR07;Database=SDC;Trusted_Connection=True;MultipleActiveResultSets=true");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer(" Server=DESKTOP-H7TUR07;Database=SDC;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
 
@@ -72,7 +72,7 @@ namespace SDC_API.Models
 
                 entity.Property(e => e.Category)
                     .HasColumnName("category")
-                    .HasMaxLength(30)
+                    .HasMaxLength(10)
                     .IsUnicode(false);
 
                 entity.Property(e => e.City)
@@ -192,7 +192,7 @@ namespace SDC_API.Models
                     .WithMany(p => p.CodeList)
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__code_list__categ__59FA5E80");
+                    .HasConstraintName("FK__code_list__categ__4D94879B");
             });
 
             modelBuilder.Entity<Drapery>(entity =>
@@ -237,18 +237,18 @@ namespace SDC_API.Models
                 entity.HasOne(d => d.DesignedByNavigation)
                     .WithMany(p => p.DraperyDesignedByNavigation)
                     .HasForeignKey(d => d.DesignedBy)
-                    .HasConstraintName("FK__drapery__designe__6B24EA82");
+                    .HasConstraintName("FK__drapery__designe__59C55456");
 
                 entity.HasOne(d => d.UpdatedByNavigation)
                     .WithMany(p => p.DraperyUpdatedByNavigation)
                     .HasForeignKey(d => d.UpdatedBy)
-                    .HasConstraintName("FK__drapery__updated__6C190EBB");
+                    .HasConstraintName("FK__drapery__updated__5AB9788F");
 
                 entity.HasOne(d => d.Room)
                     .WithMany(p => p.Drapery)
                     .HasForeignKey(d => new { d.ProjectId, d.RoomId })
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__drapery__6A30C649");
+                    .HasConstraintName("FK__drapery__58D1301D");
             });
 
             modelBuilder.Entity<Employee>(entity =>
@@ -258,7 +258,7 @@ namespace SDC_API.Models
                 entity.ToTable("employee");
 
                 entity.HasIndex(e => e.UserName)
-                    .HasName("UQ__employee__7C9273C4276C19F0")
+                    .HasName("UQ__employee__7C9273C4AC8E5308")
                     .IsUnique();
 
                 entity.Property(e => e.UserId).HasColumnName("user_id");
@@ -287,7 +287,6 @@ namespace SDC_API.Models
                 entity.Property(e => e.JobId).HasColumnName("job_id");
 
                 entity.Property(e => e.LastName)
-                    .IsRequired()
                     .HasColumnName("last_name")
                     .HasMaxLength(30)
                     .IsUnicode(false);
@@ -295,7 +294,7 @@ namespace SDC_API.Models
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasColumnName("password")
-                    .HasMaxLength(150)
+                    .HasMaxLength(30)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Phone)
@@ -323,7 +322,7 @@ namespace SDC_API.Models
                     .WithMany(p => p.Employee)
                     .HasForeignKey(d => d.JobId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__employee__job_id__4CA06362");
+                    .HasConstraintName("FK__employee__job_id__2A164134");
             });
 
             modelBuilder.Entity<Invoice>(entity =>
@@ -399,18 +398,18 @@ namespace SDC_API.Models
                 entity.HasOne(d => d.InvoiceByNavigation)
                     .WithMany(p => p.InvoiceInvoiceByNavigation)
                     .HasForeignKey(d => d.InvoiceBy)
-                    .HasConstraintName("FK__invoice__invoice__03F0984C");
+                    .HasConstraintName("FK__invoice__invoice__72910220");
 
                 entity.HasOne(d => d.Project)
                     .WithOne(p => p.Invoice)
                     .HasForeignKey<Invoice>(d => d.ProjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__invoice__project__02FC7413");
+                    .HasConstraintName("FK__invoice__project__719CDDE7");
 
                 entity.HasOne(d => d.UpdatedByNavigation)
                     .WithMany(p => p.InvoiceUpdatedByNavigation)
                     .HasForeignKey(d => d.UpdatedBy)
-                    .HasConstraintName("FK__invoice__updated__04E4BC85");
+                    .HasConstraintName("FK__invoice__updated__73852659");
             });
 
             modelBuilder.Entity<Items>(entity =>
@@ -487,18 +486,18 @@ namespace SDC_API.Models
                 entity.HasOne(d => d.DesignedByNavigation)
                     .WithMany(p => p.ItemsDesignedByNavigation)
                     .HasForeignKey(d => d.DesignedBy)
-                    .HasConstraintName("FK__items__designed___6FE99F9F");
+                    .HasConstraintName("FK__items__designed___5E8A0973");
 
                 entity.HasOne(d => d.UpdatedByNavigation)
                     .WithMany(p => p.ItemsUpdatedByNavigation)
                     .HasForeignKey(d => d.UpdatedBy)
-                    .HasConstraintName("FK__items__updated_b__70DDC3D8");
+                    .HasConstraintName("FK__items__updated_b__5F7E2DAC");
 
                 entity.HasOne(d => d.Room)
                     .WithMany(p => p.Items)
                     .HasForeignKey(d => new { d.ProjectId, d.RoomId })
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__items__6EF57B66");
+                    .HasConstraintName("FK__items__5D95E53A");
             });
 
             modelBuilder.Entity<JobType>(entity =>
@@ -567,7 +566,7 @@ namespace SDC_API.Models
                 entity.HasOne(d => d.CreatedByNavigation)
                     .WithMany(p => p.Product)
                     .HasForeignKey(d => d.CreatedBy)
-                    .HasConstraintName("FK__product__created__5CD6CB2B");
+                    .HasConstraintName("FK__product__created__3D2915A8");
             });
 
             modelBuilder.Entity<Project>(entity =>
@@ -606,17 +605,17 @@ namespace SDC_API.Models
                     .WithMany(p => p.Project)
                     .HasForeignKey(d => d.ClientId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__project__client___60A75C0F");
+                    .HasConstraintName("FK__project__client___4F47C5E3");
 
                 entity.HasOne(d => d.DesignedByNavigation)
                     .WithMany(p => p.ProjectDesignedByNavigation)
                     .HasForeignKey(d => d.DesignedBy)
-                    .HasConstraintName("FK__project__designe__619B8048");
+                    .HasConstraintName("FK__project__designe__503BEA1C");
 
                 entity.HasOne(d => d.UpdatedByNavigation)
                     .WithMany(p => p.ProjectUpdatedByNavigation)
                     .HasForeignKey(d => d.UpdatedBy)
-                    .HasConstraintName("FK__project__updated__628FA481");
+                    .HasConstraintName("FK__project__updated__51300E55");
             });
 
             modelBuilder.Entity<PurchaseOrder>(entity =>
@@ -667,24 +666,24 @@ namespace SDC_API.Models
                 entity.HasOne(d => d.OrderedByNavigation)
                     .WithMany(p => p.PurchaseOrderOrderedByNavigation)
                     .HasForeignKey(d => d.OrderedBy)
-                    .HasConstraintName("FK__purchase___order__75A278F5");
+                    .HasConstraintName("FK__purchase___order__6442E2C9");
 
                 entity.HasOne(d => d.Project)
                     .WithMany(p => p.PurchaseOrder)
                     .HasForeignKey(d => d.ProjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__purchase___proje__73BA3083");
+                    .HasConstraintName("FK__purchase___proje__625A9A57");
 
                 entity.HasOne(d => d.Supplier)
                     .WithMany(p => p.PurchaseOrder)
                     .HasForeignKey(d => d.SupplierId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__purchase___suppl__74AE54BC");
+                    .HasConstraintName("FK__purchase___suppl__634EBE90");
 
                 entity.HasOne(d => d.UpdatedByNavigation)
                     .WithMany(p => p.PurchaseOrderUpdatedByNavigation)
                     .HasForeignKey(d => d.UpdatedBy)
-                    .HasConstraintName("FK__purchase___updat__76969D2E");
+                    .HasConstraintName("FK__purchase___updat__65370702");
             });
 
             modelBuilder.Entity<PurchaseOrderdetail>(entity =>
@@ -753,18 +752,18 @@ namespace SDC_API.Models
                 entity.HasOne(d => d.OrderedByNavigation)
                     .WithMany(p => p.PurchaseOrderdetailOrderedByNavigation)
                     .HasForeignKey(d => d.OrderedBy)
-                    .HasConstraintName("FK__purchase___order__7A672E12");
+                    .HasConstraintName("FK__purchase___order__690797E6");
 
                 entity.HasOne(d => d.UpdatedByNavigation)
                     .WithMany(p => p.PurchaseOrderdetailUpdatedByNavigation)
                     .HasForeignKey(d => d.UpdatedBy)
-                    .HasConstraintName("FK__purchase___updat__7B5B524B");
+                    .HasConstraintName("FK__purchase___updat__69FBBC1F");
 
                 entity.HasOne(d => d.PurchaseOrder)
                     .WithMany(p => p.PurchaseOrderdetail)
                     .HasForeignKey(d => new { d.ProjectId, d.OrderId })
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__purchase_orderde__797309D9");
+                    .HasConstraintName("FK__purchase_orderde__681373AD");
             });
 
             modelBuilder.Entity<PurchaseStock>(entity =>
@@ -828,18 +827,18 @@ namespace SDC_API.Models
                 entity.HasOne(d => d.ReceivedByNavigation)
                     .WithMany(p => p.PurchaseStockReceivedByNavigation)
                     .HasForeignKey(d => d.ReceivedBy)
-                    .HasConstraintName("FK__purchase___recei__7F2BE32F");
+                    .HasConstraintName("FK__purchase___recei__6DCC4D03");
 
                 entity.HasOne(d => d.UpdatedByNavigation)
                     .WithMany(p => p.PurchaseStockUpdatedByNavigation)
                     .HasForeignKey(d => d.UpdatedBy)
-                    .HasConstraintName("FK__purchase___updat__00200768");
+                    .HasConstraintName("FK__purchase___updat__6EC0713C");
 
                 entity.HasOne(d => d.PurchaseOrderdetail)
                     .WithOne(p => p.PurchaseStock)
                     .HasForeignKey<PurchaseStock>(d => new { d.ProjectId, d.OrderId, d.ProductId })
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__purchase_stock__7E37BEF6");
+                    .HasConstraintName("FK__purchase_stock__6CD828CA");
             });
 
             modelBuilder.Entity<Room>(entity =>
@@ -929,18 +928,18 @@ namespace SDC_API.Models
                 entity.HasOne(d => d.DesignedByNavigation)
                     .WithMany(p => p.RoomDesignedByNavigation)
                     .HasForeignKey(d => d.DesignedBy)
-                    .HasConstraintName("FK__room__designed_b__66603565");
+                    .HasConstraintName("FK__room__designed_b__55009F39");
 
                 entity.HasOne(d => d.Project)
                     .WithMany(p => p.Room)
                     .HasForeignKey(d => d.ProjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__room__project_id__656C112C");
+                    .HasConstraintName("FK__room__project_id__540C7B00");
 
                 entity.HasOne(d => d.UpdatedByNavigation)
                     .WithMany(p => p.RoomUpdatedByNavigation)
                     .HasForeignKey(d => d.UpdatedBy)
-                    .HasConstraintName("FK__room__updated_by__6754599E");
+                    .HasConstraintName("FK__room__updated_by__55F4C372");
             });
 
             modelBuilder.Entity<Supplier>(entity =>
@@ -1009,7 +1008,7 @@ namespace SDC_API.Models
                 entity.HasOne(d => d.CreatedByNavigation)
                     .WithMany(p => p.Supplier)
                     .HasForeignKey(d => d.CreatedBy)
-                    .HasConstraintName("FK__supplier__create__4F7CD00D");
+                    .HasConstraintName("FK__supplier__create__2CF2ADDF");
             });
 
             modelBuilder.Entity<SupplierLogin>(entity =>
@@ -1046,7 +1045,7 @@ namespace SDC_API.Models
                     .WithOne(p => p.SupplierLogin)
                     .HasForeignKey<SupplierLogin>(d => d.SupplierId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__supplier___suppl__52593CB8");
+                    .HasConstraintName("FK__supplier___suppl__31B762FC");
             });
 
             modelBuilder.Entity<SupplierOrder>(entity =>
@@ -1117,7 +1116,7 @@ namespace SDC_API.Models
                     .WithOne(p => p.SupplierOrder)
                     .HasForeignKey<SupplierOrder>(d => d.SupplierId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__supplier___suppl__5535A963");
+                    .HasConstraintName("FK__supplier___suppl__367C1819");
             });
         }
     }

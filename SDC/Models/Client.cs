@@ -30,7 +30,7 @@ namespace SDC_API.Models
         public string Reference { get; set; }
         public string Mailing { get; set; }
         public string Term { get; set; }
-        public DateTime Timestamp { get; set; }
+        public DateTime? Timestamp { get; set; }
         public string Comments { get; set; }
 
         public ICollection<Project> Project { get; set; }
