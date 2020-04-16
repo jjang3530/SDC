@@ -12,7 +12,7 @@ namespace SDC_API.Test
     public class ProductsControllerTests
     {
         private static DbContextOptions<SDCContext> dbContextOptions { get; }
-        private static string connectionString = "Server=DESKTOP-H7TUR07;Database=SDC;Trusted_Connection=True;MultipleActiveResultSets=true";
+        private static string connectionString = "Server=localhost;Database=SDC;Trusted_Connection=True;MultipleActiveResultSets=true";
         private SDCContext _context;
         private ProductsController _controller;
 
