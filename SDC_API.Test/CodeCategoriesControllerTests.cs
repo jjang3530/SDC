@@ -84,13 +84,13 @@ namespace SDC_API.Test
             //Arrange
             _context = new SDCContext(dbContextOptions);
             _controller = new CodeCategoriesController(_context);
-            int newId = 26;
+            int newId = 21;
 
             //Act
             var category = new CodeCategory()
             {
                 CategoryId = newId,
-                CategoryName = "Update Pickle"
+                CategoryName = "Update Bedding"
             };
             var updatedData = await _controller.PutCodeCategory(newId, category);
 

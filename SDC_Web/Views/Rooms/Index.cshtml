@@ -13,53 +13,56 @@
     <thead>
         <tr>
             @*<th>
-                @Html.DisplayNameFor(model => model.FloorCeiling)
-            </th>
+            @Html.DisplayNameFor(model => model.FloorCeiling)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotCeiling)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BotFloor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LootObject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RootObject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InsideHorizontal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InsideVertical)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OutsideHorizontal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OutsideVertical)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrimDepth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InsideDepth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Control)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdatedTime)
+        </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.TotCeiling)
+                @Html.DisplayNameFor(model => model.RoomId)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BotFloor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LootObject)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RootObject)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InsideHorizontal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InsideVertical)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OutsideHorizontal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OutsideVertical)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TrimDepth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InsideDepth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sill)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Control)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Notes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedTime)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.DesignedByNavigation)
             </th>
@@ -69,60 +72,63 @@
             <th>
                 @Html.DisplayNameFor(model => model.UpdatedByNavigation)
             </th>
-            <th></th>
+            <th>Update</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             @*<td>
-                @Html.DisplayFor(modelItem => item.FloorCeiling)
-            </td>
+            @Html.DisplayFor(modelItem => item.FloorCeiling)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotCeiling)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BotFloor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LootObject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RootObject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InsideHorizontal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InsideVertical)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OutsideHorizontal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OutsideVertical)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrimDepth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InsideDepth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Control)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedTime)
+        </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.TotCeiling)
+                @Html.DisplayFor(modelItem => item.RoomId)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BotFloor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LootObject)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RootObject)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InsideHorizontal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InsideVertical)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OutsideHorizontal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OutsideVertical)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TrimDepth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InsideDepth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sill)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Control)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Notes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedTime)
-            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.DesignedByNavigation.FirstName)
             </td>

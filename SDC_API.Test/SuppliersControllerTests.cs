@@ -84,13 +84,13 @@ namespace SDC_API.Test
             //Arrange
             _context = new SDCContext(dbContextOptions);
             _controller = new SuppliersController(_context);
-            int newId = 61;
+            int newId = 59;
 
             //Act
             var supplier = new Supplier()
             {
                 SupplierId = newId,
-                Company = "Pickle_Tech"
+                Company = "Update Zuo"
             };
             var updatedData = await _controller.PutSupplier(newId, supplier);
 

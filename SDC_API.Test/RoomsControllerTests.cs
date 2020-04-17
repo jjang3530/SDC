@@ -46,7 +46,7 @@ namespace SDC_API.Test
         {
             //Arrange
             var roomId = "main room";
-            var projectId = 2;
+            var projectId = 12;
             _context = new SDCContext(dbContextOptions);
             _controller = new RoomsController(_context);
 

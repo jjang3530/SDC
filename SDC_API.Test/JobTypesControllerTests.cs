@@ -84,13 +84,13 @@ namespace SDC_API.Test
             //Arrange
             _context = new SDCContext(dbContextOptions);
             _controller = new JobTypesController(_context);
-            int newId = 4;
+            int newId = 6;
 
             //Act
             var jobType = new JobType()
             {
                 JobId = newId,
-                JobTitle = "Graduated"
+                JobTitle = "Update Mechanic"
             };
             var updatedData = await _controller.PutJobType(newId, jobType);
 

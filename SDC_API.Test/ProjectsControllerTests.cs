@@ -43,7 +43,7 @@ namespace SDC_API.Test
         public async void Task2_GetById_Return_NotFoundResult()
         {
             //Arrange
-            var Id = 2;
+            var Id = 12;
             _context = new SDCContext(dbContextOptions);
             _controller = new ProjectsController(_context);
 

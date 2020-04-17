@@ -90,7 +90,7 @@ namespace SDC_API.Test
             _context = new SDCContext(dbContextOptions);
             _controller = new CodeListsController(_context);
             var categoryId = 1;
-            var codeId = 5;
+            var codeId = 7;
 
             //Act
             var code = new CodeList()

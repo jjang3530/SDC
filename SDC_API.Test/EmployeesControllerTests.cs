@@ -88,7 +88,7 @@ namespace SDC_API.Test
             //Arrange
             _context = new SDCContext(dbContextOptions);
             _controller = new EmployeesController(_context);
-            int newId = 7;
+            int newId = 3;
 
             //Act
             var employee = new Employee()

@@ -13,11 +13,14 @@
     <thead>
         <tr>
             @*<th>
-                @Html.DisplayNameFor(model => model.Dimension)
-            </th>
+            @Html.DisplayNameFor(model => model.Dimension)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>*@
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.SupplierId)
             </th>
@@ -31,8 +34,8 @@
                 @Html.DisplayNameFor(model => model.Quantity)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.Uom)
-            </th>*@
+            @Html.DisplayNameFor(model => model.Uom)
+        </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.UnitPrice)
             </th>
@@ -42,36 +45,39 @@
             <th>
                 @Html.DisplayNameFor(model => model.Amount)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RetailAmount)
-            </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.CreatedTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DesignedByNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Room)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedByNavigation)
+                @Html.DisplayNameFor(model => model.RetailAmount)
             </th>*@
-            <th></th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.CreatedTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdatedTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DesignedByNavigation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Room)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdatedByNavigation)
+        </th>*@
+        <th>Update</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             @*<td>
-                @Html.DisplayFor(modelItem => item.Dimension)
-            </td>
+            @Html.DisplayFor(modelItem => item.Dimension)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>*@
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SupplierId)
             </td>
@@ -85,8 +91,8 @@
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             @*<td>
-                @Html.DisplayFor(modelItem => item.Uom)
-            </td>*@
+            @Html.DisplayFor(modelItem => item.Uom)
+        </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.UnitPrice)
             </td>
@@ -96,24 +102,24 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Amount)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RetailAmount)
-            </td>
             @*<td>
-                @Html.DisplayFor(modelItem => item.CreatedTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DesignedByNavigation.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Room.RoomId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedByNavigation.FirstName)
+                @Html.DisplayFor(modelItem => item.RetailAmount)
             </td>*@
+            @*<td>
+            @Html.DisplayFor(modelItem => item.CreatedTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DesignedByNavigation.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Room.RoomId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedByNavigation.FirstName)
+        </td>*@
             <td>
                 <a asp-action="Edit" asp-route-projectId="@item.ProjectId" asp-route-roomId="@item.RoomId" asp-route-productId="@item.ProductId">Edit</a> |
                 <a asp-action="Details" asp-route-projectId="@item.ProjectId" asp-route-roomId="@item.RoomId" asp-route-productId="@item.ProductId">Details</a> |

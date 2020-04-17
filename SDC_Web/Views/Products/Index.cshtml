@@ -13,35 +13,41 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Dimension)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.Finishes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Uom)
-            </th>*@
+            @Html.DisplayNameFor(model => model.Finishes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uom)
+        </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.BookNumber)
-            </th>*@
+            @Html.DisplayNameFor(model => model.BookNumber)
+        </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.CreatedTime)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.CreatedByNavigation)
-            </th>
-            <th></th>
+            </th>*@
+        <th>Update</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Dimension)
             </td>
@@ -49,23 +55,23 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             @*<td>
-                @Html.DisplayFor(modelItem => item.Finishes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Uom)
-            </td>*@
+            @Html.DisplayFor(modelItem => item.Finishes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Uom)
+        </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             @*<td>
-                @Html.DisplayFor(modelItem => item.BookNumber)
-            </td>*@
+            @Html.DisplayFor(modelItem => item.BookNumber)
+        </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedTime)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.CreatedByNavigation.FirstName)
-            </td>
+            </td>*@
             <td>
                 <a asp-action="Edit" asp-route-supplierID="@item.SupplierId" asp-route-productId="@item.ProductId">Edit</a>
                 <a asp-action="Details" asp-route-supplierID="@item.SupplierId" asp-route-productId="@item.ProductId">Details</a>

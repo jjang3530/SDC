@@ -87,14 +87,14 @@ namespace SDC_API.Test
             //Arrange
             _context = new SDCContext(dbContextOptions);
             _controller = new ProductsController(_context);
-            var productId = "NewPItem";
+            var productId = "NewPKProduct";
             var supplierId = 1;
 
             //Act
             var product = new Product()
             {
                 SupplierId = 1,
-                ProductId = "NewPItem",
+                ProductId = "NewPKProduct",
                 Dimension = "Length 2m"
 
             };
