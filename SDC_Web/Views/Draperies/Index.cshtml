@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.DraperyId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.TypeName)
             </th>
             <th>
@@ -21,12 +24,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.CreatedTime)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedTime)
-            </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.DesignedByNavigation)
+                @Html.DisplayNameFor(model => model.UpdatedTime)
             </th>*@
+            @*<th>
+            @Html.DisplayNameFor(model => model.DesignedByNavigation)
+        </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Room)
             </th>
@@ -40,6 +43,9 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.DraperyId)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.TypeName)
             </td>
             <td>
@@ -48,12 +54,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedTime)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedTime)
-            </td>
             @*<td>
-                @Html.DisplayFor(modelItem => item.DesignedByNavigation.FirstName)
+                @Html.DisplayFor(modelItem => item.UpdatedTime)
             </td>*@
+            @*<td>
+            @Html.DisplayFor(modelItem => item.DesignedByNavigation.FirstName)
+        </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Room.RoomId)
             </td>

@@ -13,23 +13,32 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.ProjectId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Dimension)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.Pattern)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Uom)
-            </th>*@
+            @Html.DisplayNameFor(model => model.Pattern)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Colour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uom)
+        </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.UnitPrice)
             </th>
@@ -37,17 +46,17 @@
                 @Html.DisplayNameFor(model => model.Amount)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.CreatedTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PurchaseOrderdetail)
-            </th>*@
-            <th>
+            @Html.DisplayNameFor(model => model.CreatedTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdatedTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseOrderdetail)
+        </th>*@
+            @*<th>
                 @Html.DisplayNameFor(model => model.ReceivedByNavigation)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.UpdatedByNavigation)
             </th>
@@ -58,23 +67,32 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.ProjectId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Dimension)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             @*<td>
-                @Html.DisplayFor(modelItem => item.Pattern)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Colour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Uom)
-            </td>*@
+            @Html.DisplayFor(modelItem => item.Pattern)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Colour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Uom)
+        </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.UnitPrice)
             </td>
@@ -82,17 +100,17 @@
                 @Html.DisplayFor(modelItem => item.Amount)
             </td>
             @*<td>
-                @Html.DisplayFor(modelItem => item.CreatedTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PurchaseOrderdetail.ProductId)
-            </td>*@
-            <td>
+            @Html.DisplayFor(modelItem => item.CreatedTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchaseOrderdetail.ProductId)
+        </td>*@
+            @*<td>
                 @Html.DisplayFor(modelItem => item.ReceivedByNavigation.FirstName)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.UpdatedByNavigation.FirstName)
             </td>
